@@ -17,6 +17,7 @@ namespace DevOps.Util.DotNet
         public const string ConfigurationSqlConnectionString = "RunfoConnectionString";
         public const string ConfigurationAzdoToken = "RunfoAzdoToken";
         public const string ConfigurationHelixToken = "RunfoHelixToken";
+        public const string ConfigurationGitHubImpersonateUser = "GitHubImpersonateUser";
         public const string ConfigurationGitHubAppId = "GitHubAppId";
         public const string ConfigurationGitHubAppPrivateKey = "GitHubAppPrivateKey";
         public const string ConfigurationGitHubClientId = "GitHubClientId";

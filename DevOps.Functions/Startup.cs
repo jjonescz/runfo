@@ -36,11 +36,11 @@ namespace DevOps.Functions
             // https://github.com/dotnet/arcade/issues/10764
             builder.Services.AddScoped(_ => new HelixServer(token: null));
 
-            builder.Services.AddScoped<GitHubClientFactory>(_ =>
+            builder.Services.AddScoped<IGitHubClientFactory>(_ =>
             {
                 var appId = int.Parse(config[DotNetConstants.ConfigurationGitHubAppId]!);
                 var appPrivateKey = config[DotNetConstants.ConfigurationGitHubAppPrivateKey]!;
-                return new GitHubClientFactory(appId, appPrivateKey);
+                return new GitHubAppClientFactory(appId, appPrivateKey);
             });
         }
     }

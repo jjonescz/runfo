@@ -22,7 +22,15 @@ namespace DevOps.Status
             Host.CreateDefaultBuilder(args)
                 .ConfigureAppConfiguration((context, config) =>
                 {
-                    config.AddAzureKeyVault(new Uri(DotNetConstants.KeyVaultEndPoint), new DefaultAzureCredential());
+                    // We can disable using key vault with this env var. See ..\Documentation\DevWithoutKeyVault.md
+                    if (Environment.GetEnvironmentVariable("USE_KEYVAULT") == "0")
+                    {
+                        Console.WriteLine("Disabling Azure KeyVault");
+                    }
+                    else
+                    {
+                        config.AddAzureKeyVault(new Uri(DotNetConstants.KeyVaultEndPoint), new DefaultAzureCredential());
+                    }
                 })
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
